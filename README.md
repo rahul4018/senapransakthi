@@ -1,28 +1,62 @@
-# Senapransakthi
+# Senapransakthi – AI-Driven Digital Twin System
 
 ## Overview
 
-Senapransakthi is a full-stack Data Science and AI system designed to monitor, analyze, and manage soldier health and operational data. The platform integrates machine learning-driven insights with scalable backend services and an interactive frontend dashboard to support real-time decision-making.
+Senapransakthi is a full-stack AI-driven system designed to monitor, analyze, and manage soldier health and operational data in real time.
+It integrates data ingestion, backend processing, and interactive dashboards to provide actionable insights and risk detection.
 
 ---
 
 ## Problem Statement
 
-Managing large-scale personnel health and operational data is complex and time-sensitive. Traditional systems lack intelligent analysis, real-time alerts, and unified visibility.
+Monitoring large-scale personnel health data is complex and requires real-time decision-making.
+Traditional systems lack intelligent analysis, centralized visibility, and automated alerting.
 
-Senapransakthi addresses this by combining AI-driven analysis with a centralized system for monitoring and decision support.
+Senapransakthi addresses this by combining data pipelines, analytics, and AI-assisted insights into a single platform.
 
 ---
 
 ## Key Features
 
-* **AI-driven analysis** for extracting insights from health and operational data
-* **Real-time dashboard** for monitoring key metrics
-* **Digital twin system** for representing soldier profiles dynamically
-* **Alert mechanism** for detecting and notifying critical conditions
-* **Secure authentication** using JWT
-* **Chat-based interaction module** for system communication
-* **Modular backend architecture** with scalable APIs
+* 📊 **Command Dashboard** with real-time analytics and system overview
+* 🧬 **Digital Twin System** for individual soldier health monitoring
+* 🤖 **AI Assistant** for summaries and decision support
+* 🚨 **Alert System** for detecting high-risk conditions
+* 📁 **CSV Data Pipeline** for bulk data ingestion and processing
+* 🔐 **Role-Based Access Control** (Admin / Medic)
+* 📈 **Interactive Charts** for trends and risk distribution
+
+---
+
+## Screenshots
+
+### Landing Page
+
+![Landing](screenshots/landing.png)
+
+### Command Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### AI Assistant
+
+![AI Chat](screenshots/ai-chat.png)
+
+### Digital Twin View
+
+![Digital Twin](screenshots/digital-twin.png)
+
+### CSV Upload System
+
+![Upload](screenshots/upload.png)
+
+### Medic Control Panel
+
+![Medic Panel](screenshots/medic-panel.png)
+
+### Health Report
+
+![Report](screenshots/report.png)
 
 ---
 
@@ -40,16 +74,16 @@ Senapransakthi addresses this by combining AI-driven analysis with a centralized
 * Express.js
 * RESTful APIs
 
-### Data Science / AI
+### Database
 
-* Machine learning logic integration
-* Data processing using structured datasets (CSV-based workflows)
-
-### Database & Tools
-
+* PostgreSQL (Supabase)
 * Drizzle ORM
-* PostgreSQL (or compatible database)
+
+### Other
+
 * JWT Authentication
+* CSV-based data processing
+* AI integration (rule-based + API-driven insights)
 
 ---
 
@@ -57,10 +91,11 @@ Senapransakthi addresses this by combining AI-driven analysis with a centralized
 
 The application follows a modular full-stack architecture:
 
-* **Frontend** handles user interaction and visualization
-* **Backend** manages APIs, business logic, and authentication
-* **AI/Data layer** processes datasets and generates insights
-* **Database layer** stores structured data and system state
+* **Frontend** → User interface and visualization
+* **Backend** → API layer, business logic, authentication
+* **Data Pipeline** → CSV ingestion and processing
+* **Database** → Structured storage and retrieval
+* **AI Layer** → Generates summaries and insights
 
 ---
 
@@ -68,10 +103,23 @@ The application follows a modular full-stack architecture:
 
 ```bash
 senapransakthi/
-├── frontend/        # User interface and client-side logic
-├── backend/         # APIs, services, controllers, and database logic
+├── frontend/        # UI and client-side logic
+├── backend/         # APIs, services, controllers
+├── screenshots/     # Project visuals
 └── README.md
 ```
+
+---
+
+## How AI Works
+
+The AI component analyzes processed health data and system metrics to:
+
+* Generate summaries of current system status
+* Highlight high-risk conditions
+* Provide decision-support insights via chat interface
+
+(Current implementation uses structured data analysis and API-based responses.)
 
 ---
 
@@ -102,9 +150,9 @@ npm install
 
 ---
 
-### 3. Configure environment variables
+### 3. Environment Variables
 
-Create a `.env` file inside the backend directory:
+Create a `.env` file in the backend:
 
 ```bash
 PORT=5000
@@ -132,11 +180,11 @@ npm run dev
 
 ## Future Improvements
 
-* Integration of advanced machine learning models
-* Real-time streaming data processing
-* Cloud deployment and scalability enhancements
-* Enhanced UI/UX for better usability
-* Performance optimization and monitoring
+* Deployment (Vercel / Render)
+* Advanced ML model integration
+* Real-time streaming data
+* Performance optimization
+* Enhanced UI/UX
 
 ---
 
