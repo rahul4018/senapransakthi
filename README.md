@@ -1,193 +1,193 @@
-# Senapransakthi – AI-Driven Digital Twin System
+# Senapransakthi
+
+> AI-driven digital twin system for real-time soldier health monitoring — data ingestion, risk detection, AI-assisted decision support, and a command-level SOC dashboard.
+
+---
 
 ## Overview
 
-Senapransakthi is a full-stack AI-driven system designed to monitor, analyze, and manage soldier health and operational data in real time.
-It integrates data ingestion, backend processing, and interactive dashboards to provide actionable insights and risk detection.
+Monitoring health data for large-scale military personnel is operationally complex. Traditional systems offer static dashboards with no intelligent analysis, no automated alerting, and no centralized visibility across units.
 
----
-
-## Problem Statement
-
-Monitoring large-scale personnel health data is complex and requires real-time decision-making.
-Traditional systems lack intelligent analysis, centralized visibility, and automated alerting.
-
-Senapransakthi addresses this by combining data pipelines, analytics, and AI-assisted insights into a single platform.
-
----
-
-## Key Features
-
-* 📊 **Command Dashboard** with real-time analytics and system overview
-* 🧬 **Digital Twin System** for individual soldier health monitoring
-* 🤖 **AI Assistant** for summaries and decision support
-* 🚨 **Alert System** for detecting high-risk conditions
-* 📁 **CSV Data Pipeline** for bulk data ingestion and processing
-* 🔐 **Role-Based Access Control** (Admin / Medic)
-* 📈 **Interactive Charts** for trends and risk distribution
+Senapransakthi solves this with a full-stack platform that ingests bulk personnel health data via CSV pipelines, processes it through an AI layer, and surfaces risk scores, anomalies, and decision-support insights to commanders and medics in real time — each soldier represented as a live digital twin.
 
 ---
 
 ## Screenshots
 
-### Landing Page
+| Landing | Command Dashboard |
+|---|---|
+| ![Landing](screenshots/landing.png) | ![Dashboard](screenshots/dashboard.png) |
 
-![Landing](screenshots/landing.png)
+| Digital Twin View | AI Assistant |
+|---|---|
+| ![Digital Twin](screenshots/digital-twin.png) | ![AI Chat](screenshots/ai-chat.png) |
 
-### Command Dashboard
+| CSV Upload | Medic Control Panel |
+|---|---|
+| ![Upload](screenshots/upload.png) | ![Medic Panel](screenshots/medic-panel.png) |
 
-![Dashboard](screenshots/dashboard.png)
+---
 
-### AI Assistant
+## Features
 
-![AI Chat](screenshots/ai-chat.png)
+**Command Dashboard**
+Real-time unit-level analytics — risk distribution, alert counts, health trend charts, and system status overview across all soldiers.
 
-### Digital Twin View
+**Digital Twin System**
+Individual health profiles for each soldier, updated as new data arrives. Tracks vitals, historical trends, and computed risk scores over time.
 
-![Digital Twin](screenshots/digital-twin.png)
+**AI Assistant**
+Chat interface that summarises current system state, surfaces high-risk conditions, and generates decision-support insights from processed health data.
 
-### CSV Upload System
+**Alert System**
+Automated flagging of high-risk readings with severity classification. Alerts routed by role — commanders see unit-level, medics see individual-level.
 
-![Upload](screenshots/upload.png)
+**CSV Data Pipeline**
+Bulk data ingestion for large personnel datasets. Validates, parses, and processes uploaded files into structured records without manual entry.
 
-### Medic Control Panel
+**Role-Based Access Control**
+Two roles: Admin (full access, system management) and Medic (individual soldier records, health reports, alert response). JWT-authenticated.
 
-![Medic Panel](screenshots/medic-panel.png)
+---
 
-### Health Report
+## Architecture
 
-![Report](screenshots/report.png)
+```
+┌─────────────────────────────────────────┐
+│           React + TypeScript UI          │
+│                                         │
+│  Command Dashboard · Digital Twin View  │
+│  AI Chat · Medic Panel · CSV Upload     │
+└──────────────────┬──────────────────────┘
+                   │  REST API (JWT auth)
+                   ▼
+┌─────────────────────────────────────────┐
+│         Node.js + Express Backend        │
+│                                         │
+│  Auth · Business logic · Controllers    │
+│  CSV pipeline · Risk scoring            │
+└──────────┬──────────────────┬───────────┘
+           │                  │
+           ▼                  ▼
+┌──────────────────┐  ┌──────────────────┐
+│  PostgreSQL       │  │   AI Layer       │
+│  (Supabase)       │  │                  │
+│  Drizzle ORM      │  │  Structured data │
+│                  │  │  analysis +      │
+│                  │  │  API-driven      │
+│                  │  │  insights        │
+└──────────────────┘  └──────────────────┘
+```
 
 ---
 
 ## Tech Stack
 
-### Frontend
-
-* React
-* TypeScript
-* Tailwind CSS
-
-### Backend
-
-* Node.js
-* Express.js
-* RESTful APIs
-
-### Database
-
-* PostgreSQL (Supabase)
-* Drizzle ORM
-
-### Other
-
-* JWT Authentication
-* CSV-based data processing
-* AI integration (rule-based + API-driven insights)
+| Layer | Technology |
+|---|---|
+| Frontend | React · TypeScript · Tailwind CSS |
+| Backend | Node.js · Express.js |
+| Database | PostgreSQL via Supabase · Drizzle ORM |
+| Auth | JWT |
+| Data ingestion | CSV pipeline (custom parser + validator) |
+| AI | Rule-based analysis + external API integration |
 
 ---
 
-## System Architecture
+## Getting Started
 
-The application follows a modular full-stack architecture:
+### Prerequisites
 
-* **Frontend** → User interface and visualization
-* **Backend** → API layer, business logic, authentication
-* **Data Pipeline** → CSV ingestion and processing
-* **Database** → Structured storage and retrieval
-* **AI Layer** → Generates summaries and insights
+- Node.js 18+
+- A [Supabase](https://supabase.com) project (free tier works)
 
----
-
-## Project Structure
-
-```bash
-senapransakthi/
-├── frontend/        # UI and client-side logic
-├── backend/         # APIs, services, controllers
-├── screenshots/     # Project visuals
-└── README.md
-```
-
----
-
-## How AI Works
-
-The AI component analyzes processed health data and system metrics to:
-
-* Generate summaries of current system status
-* Highlight high-risk conditions
-* Provide decision-support insights via chat interface
-
-(Current implementation uses structured data analysis and API-based responses.)
-
----
-
-## Installation & Setup
-
-### 1. Clone the repository
+### Clone and install
 
 ```bash
 git clone https://github.com/rahul4018/senapransakthi.git
 cd senapransakthi
 ```
 
-### 2. Install dependencies
-
-Frontend:
-
 ```bash
-cd frontend
-npm install
+# Install frontend dependencies
+cd frontend && npm install
+
+# Install backend dependencies
+cd ../backend && npm install
 ```
 
-Backend:
+### Environment variables
 
-```bash
-cd ../backend
-npm install
-```
+Create `backend/.env`:
 
----
-
-### 3. Environment Variables
-
-Create a `.env` file in the backend:
-
-```bash
+```env
 PORT=5000
 JWT_SECRET=your_secret_key
-DATABASE_URL=your_database_url
+DATABASE_URL=your_supabase_connection_string
+```
+
+### Run
+
+```bash
+# Terminal 1 — backend
+cd backend && npm run dev
+
+# Terminal 2 — frontend
+cd frontend && npm run dev
+```
+
+Frontend → `http://localhost:5173`
+Backend → `http://localhost:5000`
+
+---
+
+## Project Structure
+
+```
+senapransakthi/
+├── frontend/
+│   ├── src/
+│   │   ├── components/     # UI components
+│   │   ├── pages/          # Route-level views
+│   │   ├── hooks/          # Custom React hooks
+│   │   └── api/            # API client
+│   └── package.json
+├── backend/
+│   ├── src/
+│   │   ├── routes/         # Express route handlers
+│   │   ├── controllers/    # Business logic
+│   │   ├── services/       # AI layer, CSV pipeline, risk engine
+│   │   ├── middleware/      # JWT auth, role guards
+│   │   └── db/             # Drizzle schema + queries
+│   └── package.json
+├── screenshots/
+└── README.md
 ```
 
 ---
 
-### 4. Run the application
+## How the AI layer works
 
-Backend:
+The AI component receives processed health records and computes:
 
-```bash
-npm run dev
-```
+1. **Risk scores** — derived from vitals thresholds, historical deviation, and anomaly flags
+2. **Status summaries** — natural language summaries of current unit health state
+3. **Decision-support responses** — chat interface queries routed through structured data analysis + an external LLM API for narrative generation
 
-Frontend:
-
-```bash
-npm run dev
-```
+Current implementation is a hybrid: deterministic rules handle scoring and alerting; the external API handles free-text response generation.
 
 ---
 
-## Future Improvements
+## Roadmap
 
-* Deployment (Vercel / Render)
-* Advanced ML model integration
-* Real-time streaming data
-* Performance optimization
-* Enhanced UI/UX
+- [ ] Deploy frontend on Vercel + backend on Render
+- [ ] Real-time streaming data (WebSockets or SSE)
+- [ ] ML model integration for predictive risk scoring
+- [ ] Audit log for all medic and admin actions
+- [ ] PDF health report export per soldier
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+MIT
